@@ -3,3 +3,4 @@ uvicorn
 redis
 python-multipart
 pydantic
+python-dotenv
