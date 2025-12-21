@@ -2,3 +2,4 @@ ultralytics
 redis
 opencv-python-headless
 Pillow
+python-dotenv
