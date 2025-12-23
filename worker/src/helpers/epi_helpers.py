@@ -1,4 +1,8 @@
 
+"""
+Helper class para verificação de EPIs (Equipamentos de Proteção Individual)
+na detecção de pessoas usando caixas delimitadoras (bboxes).
+"""
 class EpiHelper:
 
   @staticmethod

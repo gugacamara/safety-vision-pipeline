@@ -1,4 +1,3 @@
-import os
 import redis
 import json
 from ultralytics import YOLO
@@ -10,7 +9,6 @@ logger = get_logger("worker")
 logger.info("Worker iniciado e aguardando tarefas...")
 redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=0)
 model = YOLO("yolov8n.pt")
-
 
 while True:
     try:

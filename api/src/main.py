@@ -1,9 +1,16 @@
-
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from services.file_service import saveUploadedFile, enqueueFile, getStatus
+from fastapi.middleware.cors import CORSMiddleware
+from config import ALLOWED_ORIGINS
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/upload")
 async def uploadFile(file: UploadFile = File(...)):

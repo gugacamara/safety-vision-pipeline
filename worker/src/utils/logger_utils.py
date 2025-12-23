@@ -1,5 +1,13 @@
 import logging
 
+"""
+Configura e retorna um logger para uso na aplicação.
+Args:
+    name (str): Nome do logger.
+    level (int): Nível de log (default: logging.INFO).
+Returns:
+    logging.Logger: Logger configurado.
+"""
 def get_logger(name: str = "worker", level: int = logging.INFO):
     logger = logging.getLogger(name)
     if not logger.handlers:
