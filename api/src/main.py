@@ -1,7 +1,11 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi.responses import HTMLResponse
 from services.file_service import saveUploadedFile, enqueueFile, getStatus
 from fastapi.middleware.cors import CORSMiddleware
-from config import ALLOWED_ORIGINS
+from config import ALLOWED_ORIGINS, REDIS_HOST, REDIS_PORT
+import time
+import redis
+import json
 
 app = FastAPI()
 app.add_middleware(
@@ -46,3 +50,31 @@ def checkStatus(file_id: str):
     if status is None:
         raise HTTPException(status_code=404, detail="Status não encontrado para o ID fornecido.")
     return {"file_id": file_id, "status": status}
+
+
+@app.websocket("/ws/status/{file_id}")
+async def websocketStatus(websocket: WebSocket, file_id: str):
+    """
+    WebSocket para monitorar o status do processamento em tempo real.
+    Args:
+        websocket (WebSocket): Conexão WebSocket.
+        file_id (str): ID único do arquivo.
+    Returns:
+        None
+    """
+    await websocket.accept()
+    try:
+        r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=0)
+        while True:
+            status = r.get(f"status:{file_id}")
+            if status:
+                status = status.decode()
+                status = json.loads(status)
+                await websocket.send_text(json.dumps(status))
+                if status.get("final", False):
+                    break
+            time.sleep(1)
+    except WebSocketDisconnect:
+        pass
+    finally:
+        await websocket.close()

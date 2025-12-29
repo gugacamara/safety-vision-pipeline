@@ -32,7 +32,15 @@ def enqueueFile(file_id, file_path):
     """
     json_str = json.dumps({ "ticket_id": file_id, "file_path": file_path })
     redis_client.lpush("file_queue", json_str)
-    redis_client.set(f"status:{file_id}", "aguardando processamento")
+    redis_client.set(
+        f"status:{file_id}",
+        json.dumps({
+            "code": 102, 
+            "status": "aguardando processamento", 
+            "final": False
+        })
+    )
+
 
 def getStatus(file_id):
     """

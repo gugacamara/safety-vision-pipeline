@@ -15,7 +15,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
 .upload-btn:hover:not(.disabled) {
@@ -39,3 +39,11 @@
   width: 100%;
 }
 
+.preview-img {
+  width: 500px;
+  height: 500px;
+  object-fit: contain; /* ou 'cover' se quiser preencher o espaço */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #0002;
+  background: #f8f8f8;
+}

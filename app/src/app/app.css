@@ -31,12 +31,16 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
   padding: 2rem 2.5rem;
-  min-width: 320px;
-  max-width: 400px;
+  min-height: 200px;
+  max-width: 600px;
   margin-bottom: 2rem;
 }
 

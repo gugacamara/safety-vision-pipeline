@@ -1,5 +1,6 @@
 
 <div class="upload-container">
+  <img *ngIf="imagePreviewUrl" [src]="imagePreviewUrl" alt="Pré-visualização" class="preview-img" />
   <label class="upload-btn" [class.disabled]="isUploading()">
     <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)" [disabled]="isUploading()">
     <span>

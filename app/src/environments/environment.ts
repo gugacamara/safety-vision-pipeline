@@ -1,5 +1,7 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000',
+  apiProtocol: 'http',
+  apiHost: 'localhost',
+  apiPort: 8000,
   debug: true
 };

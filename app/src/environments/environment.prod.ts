@@ -1,5 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.suaempresa.com',
+  apiProtocol: 'https',
+  apiHost: 'api.suaempresa.com',
+  apiPort: 443, // ou omita se for padrão do protocolo
   debug: false
 };

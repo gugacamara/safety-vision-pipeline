@@ -1,4 +1,6 @@
 .env
+runs
+Worker-Safety.v1i.yolov8
 src/__pycache__
 src/helpers/__pycache__
 src/utils/__pycache__
