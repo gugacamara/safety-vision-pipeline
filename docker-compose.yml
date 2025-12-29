@@ -36,14 +36,6 @@ services:
     networks:
       - safety-net
     command: python src/worker.py
-    shm_size: '8gb'
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
 
   app:
     build: ./app
