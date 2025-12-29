@@ -15,10 +15,10 @@ O **Safety Vision Pipeline** é uma aplicação full-stack para detecção autom
 
 ### 🚀 Principais Funcionalidades
 
-*   **Detecção de EPIs**: Identifica automaticamente capacetes, coletes e outros EPIs em fotos.
+*   **Detecção de EPIs**: Identifica automaticamente capacetes, coletes em fotos.
 *   **Feedback em Tempo Real**: Interface Angular com status dinâmico do processamento.
 *   **Arquitetura Modular**: Backend FastAPI, worker YOLOv8, frontend Angular, comunicação via Redis.
-*   **Containerização**: Orquestração completa via Docker Compose, com suporte a GPU.
+*   **Containerização**: Orquestração completa via Docker Compose.
 *   **Fine-tuning YOLOv8n**: Modelo YOLOv8n treinado com dataset customizado de capacetes ([Roboflow Worker Safety Dataset](https://app.roboflow.com/gugadev/worker-safety-i1ivk/overview)).
 
 ---
@@ -39,14 +39,12 @@ O **Safety Vision Pipeline** é uma aplicação full-stack para detecção autom
 
 ### Infraestrutura
 *   **Docker & Docker Compose**: Orquestração dos serviços.
-*   **NVIDIA Container Toolkit**: Suporte a GPU (opcional).
 
 ---
 
 ## ⚙️ Pré-requisitos
 
 *   [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/install/)
-*   *(Opcional)* Drivers NVIDIA e NVIDIA Container Toolkit para aceleração por GPU
 
 ---
 
@@ -81,7 +79,7 @@ O modelo YOLOv8n foi treinado (fine-tuning) com um dataset customizado de imagen
 - `vest`
 - `no-vest`
 
-O treinamento foi realizado para garantir alta precisão na detecção de EPIs em ambientes industriais e de construção.
+O treinamento foi realizado para garantir alta precisão na detecção de EPIs em ambientes industriais e de construção, o script de treinamento do modelo está em worker/src/train/train_yolo.py
 
 ---
 
